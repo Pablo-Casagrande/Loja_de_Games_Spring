@@ -2,12 +2,14 @@ package com.generation.lojadegames.model;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
@@ -38,6 +40,10 @@ import jakarta.validation.constraints.Size;
 		@NotBlank(message = "O atributo link da foto é obrigatório!")
 		@Size(min = 10, max = 1000, message = "O atributo link da foto deve ter no minimo 10 e no máximo 1000 caracteres.")
 		private String linkfoto;
+		
+		@ManyToOne
+	    @JsonIgnoreProperties("produtos")
+	    private Categoria categoria;
 
 		public Long getId() {
 			return id;
@@ -69,6 +75,14 @@ import jakarta.validation.constraints.Size;
 
 		public void setLinkfoto(String linkfoto) {
 			this.linkfoto = linkfoto;
+		}
+
+		public Categoria getCategoria() {
+			return categoria;
+		}
+
+		public void setCategoria(Categoria categoria) {
+			this.categoria = categoria;
 		}
 		
 	
