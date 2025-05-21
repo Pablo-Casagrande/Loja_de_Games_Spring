@@ -10,7 +10,7 @@ import com.generation.lojadegames.model.Produto;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Long>{
 	
-	List<Produto> findAllByNomeContainingIgnoreCase(String titulo);
+	List<Produto> findAllByNomeContainingIgnoreCase(String Nome);
 	
 	List<Produto> findAllByPreco(BigDecimal preco);
 
